@@ -20,11 +20,11 @@ class ReturnValues{
         }
     }
     public function __construct() {
-        $this->add("FORM_INCOMPLETE",       -1,     "出现未知错误(1)，请尝试重新启动客户端");
-        $this->add("CANNOT_CONNECT_SERVER", -2,     "错误(2)：无法连接到服务器");
-        $this->add("INVALID_USER_ID",       -3,     "错误(3)：用户不存在或不合法");
-        $this->add("USER_BANNED",           -4,     "错误(4)：用户已被封禁");
-        $this->add("UNKNOWN_ERROR",         -128,   "发生未知错误，请联系客服");
+        $this->add("FORM_INCOMPLETE",       -1,     "Err(1): Form incomplete.");
+        $this->add("CANNOT_CONNECT_SERVER", -2,     "Err(2): Database connection lost.");
+        $this->add("INVALID_USER_ID",       -3,     "Err(3): Invalid user.");
+        $this->add("USER_BANNED",           -4,     "Err(4): User banned.");
+        $this->add("UNKNOWN_ERROR",         -128,   "Err: Unknown error.");
     }
     public function get_val(string $name) {
         return $this->name_val[$name];

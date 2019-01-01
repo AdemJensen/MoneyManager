@@ -17,4 +17,5 @@ $type = $core->get_post("type");
 $amount = $core->get_post("amount");
 $comment = $core->get_post("comment");
 
+die("$time|$type|$amount|$comment");
 $core->sql_insert("list", "time, type, amount, comment", "`$time`, $type, $amount, $comment");

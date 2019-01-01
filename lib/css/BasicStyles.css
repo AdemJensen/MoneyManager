@@ -1,15 +1,6 @@
 html {
-    height: 100%;
-    overflow: hidden;
     font-size: 25px;
     color: white;
-}
-body {
-    height: 100%;
-    overflow: hidden;
-}
-.decorate-header {
-    height: 7%;
 }
 .uni-font {
     font-size: 25px;
@@ -22,6 +13,9 @@ body {
 .align-right {
     text-align: right;
 }
+.align-center {
+    text-align: center;
+}
 .uni-input {
     background-color: transparent;
     color: #fff;
@@ -32,36 +26,9 @@ body {
     border-bottom: solid 2px white;
     border-left-width: 0;
 }
-.cont-text-area {
-    background-color: transparent;
-    color: #fff;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-}
-#decorate-cap {
-    position: absolute;
-    left: 13%;
-    top: 13%;
-    width: 20%;
-    transform: translate(-50%,-50%);
-}
-.decorate-santa1 {
-    position: absolute;
-    right: 2%;
-    bottom: 50%;
-    width: 25%;
-}
-.decorate-santa2 {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 33%;
-}
-.decorate-polygon {
-    position: absolute;
-    left: 10%;
-    top: 14%;
-    width: 8%;
+.uni-select {
+    background: transparent;
+    color: white;
 }
 
 .general-background {
@@ -125,15 +92,11 @@ body {
 
 .border-circled {
     border-radius: 10px;
-    border: dashed white 2px;
+    border: solid white 2px;
     color: white;
 }
 
 .border-full {
     border: solid white 1px;
-}
-
-.background {
-    background-image: url('../../resource/public/background.png');
 }
 

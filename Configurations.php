@@ -9,9 +9,6 @@ class Configurations
             'password' => 'root',
             'database' => 'money_manager_database'
         ),
-        'BaiDu_api' => array(
-            'application_key' => "jSTXMLzhdVKTXYoRUCqDpWV0WFtOpm7T"
-        ),
         'development' => array(
 
         )

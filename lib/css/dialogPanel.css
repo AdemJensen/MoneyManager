@@ -8,6 +8,15 @@
     padding: 0 0;
 }
 
+.dialog-pre {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 0;
+}
+
 .dialog-partly {
     display: none;
     width: 80vw;
