@@ -89,6 +89,7 @@
                     amount: AmountStorage,
                     comment: CommentStorage
                 },
+                dataType : "json",
                 success : function(result) {
                     if (parseInt(result.code) < 0) {
                         swal({
@@ -98,7 +99,6 @@
                             button: "ok",
                         });
                     } else {
-                        alert(result);
                         swal({
                             title: "Success",
                             text: result.obj,
