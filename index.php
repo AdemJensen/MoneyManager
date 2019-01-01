@@ -98,6 +98,7 @@
                             button: "ok",
                         });
                     } else {
+                        alert(result);
                         swal({
                             title: "Success",
                             text: result.obj,
