@@ -100,7 +100,7 @@
                     } else {
                         swal({
                             title: "Success",
-                            text: "A record has been successfully uploaded!",
+                            text: result.obj,
                             icon: "success",
                             button: "ok",
                         });
