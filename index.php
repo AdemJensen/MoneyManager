@@ -93,14 +93,14 @@
                     if (parseInt(result.code) < 0) {
                         swal({
                             title: "Error",
-                            text: result.obj,
+                            text: result,
                             icon: "error",
                             button: "ok",
                         });
                     } else {
                         swal({
                             title: "Success",
-                            text: result.obj,
+                            text: result,
                             icon: "success",
                             button: "ok",
                         });
