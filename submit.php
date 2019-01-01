@@ -1,8 +1,8 @@
 <?php
 
-include "./lib/FormBase.php";
-include "./lib/AccurateTime.php";
-include "./lib/Basic.php";
+include "lib/FormBase.php";
+include "lib/AccurateTime.php";
+include "lib/Basic.php";
 
 $core = new FormBase();
 

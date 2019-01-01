@@ -2,7 +2,7 @@
 
 include "ReturnValues.php";
 include "PostFetcher.php";
-include "./../Configurations.php";
+include "Configurations.php";
 
 class FormBase {
     private $return_code;
