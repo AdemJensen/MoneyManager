@@ -286,11 +286,13 @@
                 $(this).val("");
             }).blur(function() {
                 if ($(this).val() === "") $(this).val(AmountStorage);
+                else AmountStorage = parseFloat($(this).val());
             });
             commentObj.click(function() {
                 $(this).val("");
             }).blur(function() {
                 if ($(this).val() === "") $(this).val(CommentStorage);
+                else CommentStorage = $(this).val();
             });
         });
 
