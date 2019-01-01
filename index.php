@@ -89,8 +89,9 @@
                     amount: AmountStorage,
                     comment: CommentStorage
                 },
+                dataType : "json",
                 success : function(result) {
-                    if (result.code < 0) {
+                    if (parseInt(result.code) < 0) {
                         swal({
                             title: "Error",
                             text: result.obj,
@@ -100,7 +101,7 @@
                     } else {
                         swal({
                             title: "Success",
-                            text: "A record has been successfully uploaded!",
+                            text: result.obj,
                             icon: "success",
                             button: "ok",
                         });
@@ -286,11 +287,13 @@
                 $(this).val("");
             }).blur(function() {
                 if ($(this).val() === "") $(this).val(AmountStorage);
+                else AmountStorage = parseFloat($(this).val());
             });
             commentObj.click(function() {
                 $(this).val("");
             }).blur(function() {
                 if ($(this).val() === "") $(this).val(CommentStorage);
+                else CommentStorage = $(this).val();
             });
         });
 
