@@ -90,7 +90,7 @@
                     comment: CommentStorage
                 },
                 success : function(result) {
-                    if (result.code < 0) {
+                    if (parseInt(result.code) < 0) {
                         swal({
                             title: "Error",
                             text: result.obj,
@@ -100,7 +100,7 @@
                     } else {
                         swal({
                             title: "Success",
-                            text: result,
+                            text: result.obj,
                             icon: "success",
                             button: "ok",
                         });
