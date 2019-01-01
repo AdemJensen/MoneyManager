@@ -100,7 +100,7 @@
                     } else {
                         swal({
                             title: "Success",
-                            text: result.obj,
+                            text: result,
                             icon: "success",
                             button: "ok",
                         });
