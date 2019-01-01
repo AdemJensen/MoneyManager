@@ -96,7 +96,7 @@ class FormBase {
     public function sql_insert(string $table, string $target, string $values) {
         printf("INSERT INTO {$table} ({$target}) VALUES ({$values}) <br/>");
         $res = $this->database_link->query("INSERT INTO {$table} ({$target}) VALUES ({$values})");
-        if (!$res) $this->return_fault("UNKNOWN_ERROR");
+        if (!$res) $this->return_fault("UNKNOWN_ERROR", $this->database_link->error);
         return $res;
     }
     public function sql_delete(string $table, string $condition) {
