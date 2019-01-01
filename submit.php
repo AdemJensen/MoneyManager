@@ -21,5 +21,5 @@ $comment = $core->get_post("comment");
 
 
 //die("$time, $type, $amount, $comment");
-$core->sql_insert("list", "time, type, amount, comment", "`$time`, $type, $amount, $comment");
+$core->sql_insert("list", "time, type, amount, comment", "`$time`, `$type`, `$amount`, `$comment`");
 $core->return_success("SUCCESS", "A record has been submitted successfully.");
