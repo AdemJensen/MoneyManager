@@ -222,6 +222,8 @@
             [4.5, "4.5 yuan's Slag cake for %meal.", "Dine", "minimum7"],
             [4.0, "10 dumplings for %meal.", "Dine", "better1"],
             [5.0, "A bowl of Huntun for %meal.", "Dine", "better2"],
+            [5.0, "A plate of Fried Rice for %meal.", "Dine", "better3"],
+            [6.0, "A plate of Fried Rice for %meal.", "Dine", "better4"],
             [2.0, "A pack of fruit at a price lower than 2 yuan for %meal.", "Dine", "fruit1"],
             [4.0, "A pack of fruit at a price lower than 4 yuan for %meal.", "Dine", "fruit2"],
             [6.0, "A pack of fruit at a price lower than 6 yuan for %meal.", "Dine", "fruit3"],
@@ -234,7 +236,8 @@
             [0.0, "A whole trip between SOFT and OLD.", "Fare", "STO"],
             [0.0, "A whole trip between SOFT and CENTER.", "Fare", "STC"],
             [0.0, "A whole trip between SOFT and HOME.", "Fare", "STH"],
-            [0.0, "A whole trip between SOFT and SSFZ.", "Fare", "STS"]
+            [0.0, "A whole trip between SOFT and SSFZ.", "Fare", "STS"],
+            [0.0, "A whole trip between SOFT and Wanda.", "Fare", "STW"]
         ];
         function parseComment(str) {
             let hour = displayTime.getHour();
@@ -319,6 +322,8 @@
             <option value="minimum7">The 4.5 Yuan's Slag cake</option>
             <option value="better1">4 Yuan's Dumpling</option>
             <option value="better2">5 Yuan's Huntun</option>
+            <option value="better3">5 Yuan's Fried rice.</option>
+            <option value="better4">6 Yuan's Fried rice.</option>
             <option value="fruit1">2 Yuan's Fruit</option>
             <option value="fruit2">4 Yuan's Fruit</option>
             <option value="fruit3">6 Yuan's Fruit</option>
@@ -338,6 +343,7 @@
             <option value="STC">SDU-SOFT <---> SDU-CENTER</option>
             <option value="STH">SDU-SOFT <---> HOME</option>
             <option value="STS">SDU-SOFT <---> SSFZ</option>
+            <option value="STW">SDU-SOFT <---> Wanda</option>
             <option value="others">Other Transportation</option>
         </select>
     </div>
