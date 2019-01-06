@@ -218,8 +218,8 @@
             [2.1, "A cheap %meal at the dining hall.", "Dine", "minimum3"],
             [2.0, "2 yuan's fried rice for breakfast.", "Dine", "minimum4"],
             [3.0, "2 yuan's fried rice with an egg or a ham for breakfast.", "Dine", "minimum5"],
-            [4.0, "4 yuan's Slag cake for %meal.", "Dine", "minimum6"],
-            [4.5, "4.5 yuan's Slag cake for %meal.", "Dine", "minimum7"],
+            [4.5, "4.5 yuan's Slag cake for %meal.", "Dine", "minimum6"],
+            [5.5, "5.5 yuan's Slag cake for %meal.", "Dine", "minimum7"],
             [4.0, "10 dumplings for %meal.", "Dine", "better1"],
             [5.0, "A bowl of Huntun for %meal.", "Dine", "better2"],
             [5.0, "A plate of Fried Rice for %meal.", "Dine", "better3"],
@@ -318,8 +318,8 @@
             <option value="minimum3">The 2.1 Yuan's set</option>
             <option value="minimum4">The 2 Yuan's rice for breakfast</option>
             <option value="minimum5">The 3 Yuan's rice for breakfast</option>
-            <option value="minimum6">The 4 Yuan's Slag cake</option>
-            <option value="minimum7">The 4.5 Yuan's Slag cake</option>
+            <option value="minimum6">The 4.5 Yuan's Slag cake</option>
+            <option value="minimum7">The 5.5 Yuan's Slag cake</option>
             <option value="better1">4 Yuan's Dumpling</option>
             <option value="better2">5 Yuan's Huntun</option>
             <option value="better3">5 Yuan's Fried rice.</option>
