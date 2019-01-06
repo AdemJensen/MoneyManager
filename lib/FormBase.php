@@ -90,23 +90,23 @@ class FormBase {
         if (strlen($condition)) $sql_word = "SELECT {$target} FROM {$table} WHERE {$condition}";
         else $sql_word = "SELECT {$target} FROM {$table}";
         $res = $this->database_link->query($sql_word);
-        if (!$res) $this->return_fault("UNKNOWN_ERROR");
+        if (!$res) $this->return_fault("UNKNOWN_ERROR",  $this->database_link->error);
         return $res;
     }
     public function sql_insert(string $table, string $target, string $values) {
         //printf("INSERT INTO {$table} ({$target}) VALUES ({$values}) <br/>");
         $res = $this->database_link->query("INSERT INTO {$table} ({$target}) VALUES ({$values})");
-        if (!$res) $this->return_fault("UNKNOWN_ERROR"/*, $this->database_link->error*/);
+        if (!$res) $this->return_fault("UNKNOWN_ERROR",  $this->database_link->error);
         return $res;
     }
     public function sql_delete(string $table, string $condition) {
         $res = $this->database_link->query("DELETE FROM {$table} WHERE {$condition}");
-        if (!$res) $this->return_fault("UNKNOWN_ERROR");
+        if (!$res) $this->return_fault("UNKNOWN_ERROR",  $this->database_link->error);
         return $res;
     }
     public function sql_update(string $table, string $values, string $condition) {
         $res = $this->database_link->query("UPDATE {$table} SET {$values} WHERE $condition");
-        if (!$res) $this->return_fault("UNKNOWN_ERROR");
+        if (!$res) $this->return_fault("UNKNOWN_ERROR",  $this->database_link->error);
         return $res;
     }
 }
