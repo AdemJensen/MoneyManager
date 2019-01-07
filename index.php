@@ -351,7 +351,34 @@
     <div class="col-11 flex" style="margin-top: 20px;">
         <script>
             let swapArea = "";
-            function makeHidden() {
+            let makeHiddenTrigger = false;
+            function makeHidden(phase) {
+                if (phase === 1) {
+                    if (makeHiddenTrigger) {
+                        canRevert = false;
+                        clearCommentBtnObj.html("Recovery deleted");
+                        setTimeout(function () {
+                            clearCommentBtnObj.html("Clear");
+                        }, 1000);
+                        return;
+                    }
+                    makeHiddenTrigger = true;
+                    setTimeout(function () {
+                        makeHiddenTrigger = false;
+                    }, 1500);
+                } else {
+                    if (makeHiddenTrigger) {
+                        makeHiddenTrigger = false;
+                        doHidden();
+                    }
+                }
+            }
+            function doHidden() {
+                CommentStorage = commentObj.val();
+                clearCommentBtnObj.html("TRIGGERED");
+                setTimeout(function () {
+                    clearCommentBtnObj.html("Clear");
+                }, 1000);
                 if (CommentStorage === "[HIDDEN] ") {
                     CommentStorage = swapArea;
                     commentObj.val(swapArea);
@@ -382,6 +409,7 @@
                 }, 1000);
             }
             function clearComment() {
+                if (makeHiddenTrigger) return;
                 if (canRevert) {//In the status 'revert'.
                     canRevert = false;
                     CommentStorage = swapArea;
@@ -408,8 +436,8 @@
                 }
             }
         </script>
-        <p class="uni-font padding-none margin-none" ondblclick="makeHidden();">Comment</p>
-        <p id="clearComment" class="uni-font margin-none border-circled padding-sm" style="font-size: 10px; border-width: 1px;margin-left: 5px;height: 15px;" onclick="clearComment();">Clear</p>
+        <p class="uni-font padding-none margin-none" onclick="makeHidden(1);">Comment</p>
+        <p id="clearComment" class="uni-font margin-none border-circled padding-sm" style="font-size: 10px; border-width: 1px;margin-left: 5px;height: 15px;" onclick="clearComment();makeHidden(2);">Clear</p>
     </div>
     <textarea id="comment" class="col-10 align-left" style="font-size: 20px;resize: none;height: 80px;" title=""><?php ?></textarea>
     <div class="col-11 flex flex-center" style="height: 70px;">
