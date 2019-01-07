@@ -280,10 +280,12 @@
         let CommentStorage = "";
         let TypeUploadContent = "";
         let amountObj = null;       //The price input.
-        let commentObj = null;      //The comment input
+        let commentObj = null;      //The comment input.
+        let clearCommentBtnObj = null;      //The clear comment btn.
         $(document).ready(function() {
             amountObj = $("#amount");
             commentObj = $("#comment");
+            clearCommentBtnObj = $("#clearComment");
             amountObj.click(function() {
                 $(this).val("");
             }).blur(function() {
@@ -360,13 +362,54 @@
                     CommentStorage = "[HIDDEN] ";
                 }
             }
+            let canRevert = false;
+            function clearCommentCountdown(value) {
+                if (value === 0) {
+                    canRevert = false;
+                    clearCommentBtnObj.html("Recovery deleted");
+                    setTimeout(function () {
+                        clearCommentBtnObj.html("Clear");
+                    }, 1000);
+                    return;
+                }
+                if (!canRevert) {
+                    clearCommentBtnObj.html("Clear");
+                    return;
+                }
+                clearCommentBtnObj.html("Revert(" + value + ")");
+                setTimeout(function () {
+                    clearCommentCountdown(value - 1);
+                }, 1000);
+            }
             function clearComment() {
-                commentObj.val("");
-                CommentStorage = "";
+                if (canRevert) {//In the status 'revert'.
+                    canRevert = false;
+                    CommentStorage = swapArea;
+                    commentObj.val(swapArea);
+                    clearCommentBtnObj.html("Successfully reverted");
+                    setTimeout(function () {
+                        clearCommentBtnObj.html("Clear");
+                    }, 1000);
+                    swapArea = "";
+                } else {//In the status 'clear'.
+                    CommentStorage = commentObj.val();
+                    if (CommentStorage === "") {
+                        clearCommentBtnObj.html("Nothing to clear");
+                        setTimeout(function () {
+                            clearCommentBtnObj.html("Clear");
+                        }, 1000);
+                        return;
+                    }
+                    commentObj.val("");
+                    swapArea = CommentStorage;
+                    CommentStorage = "";
+                    canRevert = true;
+                    clearCommentCountdown(5);
+                }
             }
         </script>
         <p class="uni-font padding-none margin-none" ondblclick="makeHidden();">Comment</p>
-        <p id="clearcomment" class="uni-font margin-none border-circled padding-sm" style="font-size: 10px; border-width: 1px;margin-left: 5px;height: 15px;" onclick="clearComment();">Clear</p>
+        <p id="clearComment" class="uni-font margin-none border-circled padding-sm" style="font-size: 10px; border-width: 1px;margin-left: 5px;height: 15px;" onclick="clearComment();">Clear</p>
     </div>
     <textarea id="comment" class="col-10 align-left" style="font-size: 20px;resize: none;height: 80px;" title=""><?php ?></textarea>
     <div class="col-11 flex flex-center" style="height: 70px;">
