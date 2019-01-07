@@ -274,9 +274,7 @@
                 }
             }
             amountObj.val("");
-            commentObj.val("");
             AmountStorage = "";
-            CommentStorage = "";
         }
         let AmountStorage = "";
         let CommentStorage = "";
@@ -291,12 +289,6 @@
             }).blur(function() {
                 if ($(this).val() === "") $(this).val(AmountStorage);
                 else AmountStorage = parseFloat($(this).val());
-            });
-            commentObj.click(function() {
-                $(this).val("");
-            }).blur(function() {
-                if ($(this).val() === "") $(this).val(CommentStorage);
-                else CommentStorage = $(this).val();
             });
         });
 
@@ -355,7 +347,26 @@
         <label>Yuan</label>
     </div>
     <div class="col-11 flex" style="margin-top: 20px;">
-        <p class="uni-font padding-none margin-none">Comment</p>
+        <script>
+            let swapArea = "";
+            function makeHidden() {
+                if (CommentStorage === "[HIDDEN] ") {
+                    CommentStorage = swapArea;
+                    commentObj.val(swapArea);
+                    swapArea = "";
+                } else {
+                    commentObj.val("[HIDDEN] ");
+                    swapArea = CommentStorage;
+                    CommentStorage = "[HIDDEN] ";
+                }
+            }
+            function clearComment() {
+                commentObj.val("");
+                CommentStorage = "";
+            }
+        </script>
+        <p class="uni-font padding-none margin-none" ondblclick="makeHidden();">Comment</p>
+        <p id="clearcomment" class="uni-font margin-none border-circled padding-sm" style="font-size: 10px; border-width: 1px;margin-left: 5px;height: 15px;" onclick="clearComment();">Clear</p>
     </div>
     <textarea id="comment" class="col-10 align-left" style="font-size: 20px;resize: none;height: 80px;" title=""><?php ?></textarea>
     <div class="col-11 flex flex-center" style="height: 70px;">
