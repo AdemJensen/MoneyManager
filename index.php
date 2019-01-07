@@ -398,7 +398,6 @@
                     return;
                 }
                 if (!canRevert) {
-                    clearCommentBtnObj.html("Clear");
                     return;
                 }
                 clearCommentBtnObj.html("Revert(" + value + ")");
