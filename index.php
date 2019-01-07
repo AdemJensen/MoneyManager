@@ -189,15 +189,15 @@
         </div>
         <p class="col-1 uni-font" style="text-align: center;">:</p>
         <div class="col-1 flex flex-column flex-center margin-none padding-none">
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 1, 0);refreshTimeDisplay();">+</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 10, 0);refreshTimeDisplay();">+</div>
             <input id="time-minute" class="col-12 align-right uni-font-sm uni-input" style="text-align: center;" title="" onfocus="$(this).val('')" onblur="modifyTime()" />
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, -1, 0);refreshTimeDisplay();">-</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, -10, 0);refreshTimeDisplay();">-</div>
         </div>
         <p class="col-1 uni-font" style="text-align: center;">:</p>
         <div class="col-1 flex flex-column flex-center margin-none padding-none">
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, 1);refreshTimeDisplay();">+</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, 20);refreshTimeDisplay();">+</div>
             <input id="time-second" class="col-12 align-right uni-font-sm uni-input" style="text-align: center;" title="" onfocus="$(this).val('')" onblur="modifyTime()" />
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, -1);refreshTimeDisplay();">-</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, -20);refreshTimeDisplay();">-</div>
         </div>
     </div>
     <div class="col-11 flex">
