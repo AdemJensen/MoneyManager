@@ -353,11 +353,16 @@
             function makeHidden(phase) {
                 if (phase === 1) {
                     if (makeHiddenTrigger) {
-                        canRevert = false;
-                        clearCommentBtnObj.html("Recovery deleted");
+                        if (canRevert) {
+                            canRevert = false;
+                            clearCommentBtnObj.html("Recovery deleted");
+                        } else {
+                            clearCommentBtnObj.html("No recovery to delete");
+                        }
                         setTimeout(function () {
                             clearCommentBtnObj.html("Clear");
                         }, 1000);
+                        makeHiddenTrigger = false;
                         return;
                     }
                     makeHiddenTrigger = true;
