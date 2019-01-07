@@ -374,6 +374,7 @@
             function doHidden() {
                 CommentStorage = commentObj.val();
                 clearCommentBtnObj.html("TRIGGERED");
+                canRevert = false;
                 setTimeout(function () {
                     clearCommentBtnObj.html("Clear");
                 }, 1000);
