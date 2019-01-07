@@ -273,8 +273,6 @@
                     return;
                 }
             }
-            amountObj.val("");
-            AmountStorage = "";
         }
         let AmountStorage = "";
         let CommentStorage = "";
