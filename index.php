@@ -189,15 +189,15 @@
         </div>
         <p class="col-1 uni-font" style="text-align: center;">:</p>
         <div class="col-1 flex flex-column flex-center margin-none padding-none">
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 1, 0);refreshTimeDisplay();">+</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 10, 0);refreshTimeDisplay();">+</div>
             <input id="time-minute" class="col-12 align-right uni-font-sm uni-input" style="text-align: center;" title="" onfocus="$(this).val('')" onblur="modifyTime()" />
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, -1, 0);refreshTimeDisplay();">-</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, -10, 0);refreshTimeDisplay();">-</div>
         </div>
         <p class="col-1 uni-font" style="text-align: center;">:</p>
         <div class="col-1 flex flex-column flex-center margin-none padding-none">
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, 1);refreshTimeDisplay();">+</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, 20);refreshTimeDisplay();">+</div>
             <input id="time-second" class="col-12 align-right uni-font-sm uni-input" style="text-align: center;" title="" onfocus="$(this).val('')" onblur="modifyTime()" />
-            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, -1);refreshTimeDisplay();">-</div>
+            <div class="uni-font padding-none margin-none" onclick="displayTime.add(0, 0, 0, -20);refreshTimeDisplay();">-</div>
         </div>
     </div>
     <div class="col-11 flex">
@@ -274,29 +274,23 @@
                 }
             }
             amountObj.val("");
-            commentObj.val("");
             AmountStorage = "";
-            CommentStorage = "";
         }
         let AmountStorage = "";
         let CommentStorage = "";
         let TypeUploadContent = "";
         let amountObj = null;       //The price input.
-        let commentObj = null;      //The comment input
+        let commentObj = null;      //The comment input.
+        let clearCommentBtnObj = null;      //The clear comment btn.
         $(document).ready(function() {
             amountObj = $("#amount");
             commentObj = $("#comment");
+            clearCommentBtnObj = $("#clearComment");
             amountObj.click(function() {
                 $(this).val("");
             }).blur(function() {
                 if ($(this).val() === "") $(this).val(AmountStorage);
                 else AmountStorage = parseFloat($(this).val());
-            });
-            commentObj.click(function() {
-                $(this).val("");
-            }).blur(function() {
-                if ($(this).val() === "") $(this).val(CommentStorage);
-                else CommentStorage = $(this).val();
             });
         });
 
@@ -355,7 +349,67 @@
         <label>Yuan</label>
     </div>
     <div class="col-11 flex" style="margin-top: 20px;">
-        <p class="uni-font padding-none margin-none">Comment</p>
+        <script>
+            let swapArea = "";
+            function makeHidden() {
+                if (CommentStorage === "[HIDDEN] ") {
+                    CommentStorage = swapArea;
+                    commentObj.val(swapArea);
+                    swapArea = "";
+                } else {
+                    commentObj.val("[HIDDEN] ");
+                    swapArea = CommentStorage;
+                    CommentStorage = "[HIDDEN] ";
+                }
+            }
+            let canRevert = false;
+            function clearCommentCountdown(value) {
+                if (value === 0) {
+                    canRevert = false;
+                    clearCommentBtnObj.html("Recovery deleted");
+                    setTimeout(function () {
+                        clearCommentBtnObj.html("Clear");
+                    }, 1000);
+                    return;
+                }
+                if (!canRevert) {
+                    clearCommentBtnObj.html("Clear");
+                    return;
+                }
+                clearCommentBtnObj.html("Revert(" + value + ")");
+                setTimeout(function () {
+                    clearCommentCountdown(value - 1);
+                }, 1000);
+            }
+            function clearComment() {
+                if (canRevert) {//In the status 'revert'.
+                    canRevert = false;
+                    CommentStorage = swapArea;
+                    commentObj.val(swapArea);
+                    clearCommentBtnObj.html("Successfully reverted");
+                    setTimeout(function () {
+                        clearCommentBtnObj.html("Clear");
+                    }, 1000);
+                    swapArea = "";
+                } else {//In the status 'clear'.
+                    CommentStorage = commentObj.val();
+                    if (CommentStorage === "") {
+                        clearCommentBtnObj.html("Nothing to clear");
+                        setTimeout(function () {
+                            clearCommentBtnObj.html("Clear");
+                        }, 1000);
+                        return;
+                    }
+                    commentObj.val("");
+                    swapArea = CommentStorage;
+                    CommentStorage = "";
+                    canRevert = true;
+                    clearCommentCountdown(5);
+                }
+            }
+        </script>
+        <p class="uni-font padding-none margin-none" ondblclick="makeHidden();">Comment</p>
+        <p id="clearComment" class="uni-font margin-none border-circled padding-sm" style="font-size: 10px; border-width: 1px;margin-left: 5px;height: 15px;" onclick="clearComment();">Clear</p>
     </div>
     <textarea id="comment" class="col-10 align-left" style="font-size: 20px;resize: none;height: 80px;" title=""><?php ?></textarea>
     <div class="col-11 flex flex-center" style="height: 70px;">
