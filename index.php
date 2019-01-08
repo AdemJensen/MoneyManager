@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <script type="text/javascript" src="lib/js/jQuery.js" ></script>
     <link rel="icon" href="resource/favicon.ico" type="image/x-icon"/>
-    <link rel="apple-touch-icon" href="resource/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="resource/apple-icon.png" type="image/x-icon"/>
 
     <!-- 自适应先决条件 -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
