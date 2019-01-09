@@ -232,6 +232,7 @@
             [8.0, "A set of Normal Omelette for %meal.", "Dine", "super1"],
             [12.0, "A set of Chicken Omelette for %meal.", "Dine", "super2"],
             [12.0, "A super set for %meal.", "Dine", "super3"],
+            [10.0, "A bowl of Sauteed Noodles for %meal.", "Dine", "super4"],
             [0.0, "A bottle of NonFu Spring.", "Drink", "water"],
             [0.0, "A whole trip between SOFT and MOUNTAIN.", "Fare", "STM"],
             [0.0, "A whole trip between SOFT and OLD.", "Fare", "STO"],
@@ -324,6 +325,7 @@
             <option value="super1">8 Yuan's Omelette</option>
             <option value="super2">12 Yuan's Omelette</option>
             <option value="super3">12 Yuan's Super set</option>
+            <option value="super4">10 Yuan's Sauteed Noodles</option>
             <option value="others">Other</option>
         </select>
         <select title="" id="extra-Drink" style="display: none;font-size: 20px;" class="col-12 uni-select" onchange="insertTemplate();">
