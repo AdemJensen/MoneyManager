@@ -87,8 +87,8 @@
                 data : {
                     time: displayTime.toString(),
                     type: TypeUploadContent,
-                    amount: AmountStorage,
-                    comment: CommentStorage
+                    amount: amountObj.val(),
+                    comment: commentObj.val()
                 },
                 dataType : "json",
                 success : function(result) {
