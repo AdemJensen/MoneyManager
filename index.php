@@ -80,46 +80,62 @@
             });
         }
         function upload() {
-            $("#uploadButton").html('<img src="resource/loading.gif" style="height: 30px;" >');
-            $.ajax({
-                method : 'POST',
-                url : 'submit.php',
-                data : {
-                    time: displayTime.toString(),
-                    type: TypeUploadContent,
-                    amount: amountObj.val(),
-                    comment: commentObj.val()
-                },
-                dataType : "json",
-                success : function(result) {
-                    if (parseInt(result.code) < 0) {
-                        swal({
-                            title: "Error",
-                            text: result.obj,
-                            icon: "error",
-                            button: "ok",
-                        });
-                    } else {
-                        swal({
-                            title: "Success",
-                            text: result.obj,
-                            icon: "success",
-                            button: "ok",
-                        });
+            swal({
+                title: "Confirm",
+                text: "Are you sure you want to push up the following data:\n time : " + displayTime.toString() + "\ntype : " + TypeUploadContent + "\namount : " + amountObj.val() + "\ncomment : " + commentObj.val(),
+                icon: "info",
+                buttons: {
+                    cancel: "No, wait a sec",
+                    confirm: {
+                        text: "Confirm",
+                        value: true
                     }
-                },
-                error : function() {
-                    swal({
-                        title: "Error",
-                        text: "Failed to upload. Connection lost.",
-                        icon: "error",
-                        button: "ok",
+                }
+            }).then((value) => {
+                if (value) {
+                    $("#uploadButton").html('<img src="resource/loading.gif" style="height: 30px;" >');
+                    $.ajax({
+                        method : 'POST',
+                        url : 'submit.php',
+                        data : {
+                            time: displayTime.toString(),
+                            type: TypeUploadContent,
+                            amount: amountObj.val(),
+                            comment: commentObj.val()
+                        },
+                        dataType : "json",
+                        success : function(result) {
+                            if (parseInt(result.code) < 0) {
+                                swal({
+                                    title: "Error",
+                                    text: result.obj,
+                                    icon: "error",
+                                    button: "ok",
+                                });
+                            } else {
+                                swal({
+                                    title: "Success",
+                                    text: result.obj,
+                                    icon: "success",
+                                    button: "ok",
+                                });
+                            }
+                        },
+                        error : function() {
+                            swal({
+                                title: "Error",
+                                text: "Failed to upload. Connection lost.",
+                                icon: "error",
+                                button: "ok",
+                            });
+                        },
+                        complete : function() {
+                            $("#uploadButton").html('Submit');
+                        }
                     });
-                },
-                complete : function() {
-                    $("#uploadButton").html('Submit');
                 }
             });
+
         }
         function refreshTimeDisplay() {
             yearObj.val(displayTime.getYear());
